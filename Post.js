@@ -1,21 +1,26 @@
 const api = 'http://api-exemple-v1.com/';
-const fetchData = async () => {
+const postData = {
+    // Les données que vous souhaitez envoyer avec la requête POST
+    key1: 'value1',
+    key2: 'value2'
+};
+
+const fetchDataPost = async () => {
     try {
-        const response = await axios.get(api, {
+        const response = await axios.post(api, postData, {
             headers: {
-                'Content-Type': 'application/json', // Exemple d'en-tête pour spécifier le type de contenu
-                'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Exemple d'en-tête d'autorisation avec un jeton d'accès
-                'Accept-Language' : 'fr' // Spécifie la langue de préférence
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
+                'Accept-Language': 'fr',
             }
         });
-        // Traitement de la réponse ici
         console.log(response.data);
     } catch (error) {
-        // Gestion des erreurs
         console.error('Une erreur s\'est produite : ', error);
     } finally {
         // Code exécuté quel que soit le résultat de la requête
     }
 };
 
-fetchData();
+// Appel de la fonction fetchDataPost
+fetchDataPost();
